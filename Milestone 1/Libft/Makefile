@@ -52,15 +52,20 @@ SRCS = $(SRC_DIR)/
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
+
+$(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -I $(SRC_DIR) -c $< -o $@
 
 clean: 
-	rm -rf $(NAME)
+	rm -rf $(OBJS)
 
+fclean: clean
+	rm -rf $(NAME)
+	
 re: fclean
 	make
 
-.PHONY: all celan fclean re bonus
+.PHONY: all clean fclean re bonus
