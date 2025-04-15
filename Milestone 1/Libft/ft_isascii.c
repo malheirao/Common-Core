@@ -6,11 +6,11 @@
 /*   By: lmanzani <lmanzani@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:25:17 by lmanzani          #+#    #+#             */
-/*   Updated: 2025/04/09 16:27:33 by lmanzani         ###   ########.fr       */
+/*   Updated: 2025/04/15 07:44:57 by lmanzani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lift.h"
+#include "libft.h"
 
 int	ft_isascii(int c)
 {

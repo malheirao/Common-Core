@@ -6,7 +6,7 @@
 /*   By: lmanzani <lmanzani@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 14:00:31 by lmanzani          #+#    #+#             */
-/*   Updated: 2025/04/10 14:03:17 by lmanzani         ###   ########.fr       */
+/*   Updated: 2025/04/15 10:40:34 by lmanzani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ void	*ft_memset(void *s, int c, size_t n)
 {
 	unsigned char	*placeholder;
 
-	placeholder = (unsigned char *)b;
-	while (len > 0)
+	placeholder = (unsigned char *)s;
+	while (n > 0)
 	{
 		*placeholder = (unsigned char)c;
 		placeholder++;
-		len--;
+		n--;
 	}
-	return (b);
+	return (s);
 }

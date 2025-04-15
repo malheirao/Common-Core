@@ -6,11 +6,18 @@
 /*   By: lmanzani <lmanzani@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 15:28:55 by lmanzani          #+#    #+#             */
-/*   Updated: 2025/04/10 16:11:42 by lmanzani         ###   ########.fr       */
+/*   Updated: 2025/04/15 10:58:58 by lmanzani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+int	ft_isspace(int c)
+{
+	if ((c >= 9 && c <= 13) || (c == 32))
+		return (1);
+	return (0);
+}
 
 size_t	skip_whitespaces(const char *str, size_t z)
 {
@@ -19,7 +26,7 @@ size_t	skip_whitespaces(const char *str, size_t z)
 	return (z);
 }
 
-int	atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	size_t	i;
 	size_t	z;
