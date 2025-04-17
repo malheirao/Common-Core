@@ -6,7 +6,7 @@
 /*   By: lmanzani <lmanzani@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:25:17 by lmanzani          #+#    #+#             */
-/*   Updated: 2025/04/15 07:44:57 by lmanzani         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:39:36 by lmanzani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,3 +18,9 @@ int	ft_isascii(int c)
 		return (1);
 	return (0);
 }
+/*
+#include <stdio.h>
+int main()
+{
+	printf("%d",ft_isascii(4));
+}*/

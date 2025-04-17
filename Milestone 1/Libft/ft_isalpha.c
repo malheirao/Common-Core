@@ -6,7 +6,7 @@
 /*   By: lmanzani <lmanzani@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:29:45 by lmanzani          #+#    #+#             */
-/*   Updated: 2025/04/09 16:14:22 by lmanzani         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:49:01 by lmanzani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,3 +18,10 @@ int	ft_isalpha(int c)
 		return (1);
 	return (0);
 }
+/*
+#include <stdio.h>
+
+int main ()
+{
+	printf("%d", ft_isalpha('a'));
+}*/	

@@ -6,7 +6,7 @@
 /*   By: lmanzani <lmanzani@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:03:14 by lmanzani          #+#    #+#             */
-/*   Updated: 2025/04/16 13:12:56 by lmanzani         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:14:44 by lmanzani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stddef.h>
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}	t_list;
 
 int		ft_isalnum(int i);
 int		ft_isalpha(int i);
@@ -51,15 +57,15 @@ char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(const char *s1, const char *set);
 char	**ft_split(const char *s, char c);
 char	*ft_strmapi(const char *s, char (*f)(unsigned int, char));
-//void	ft_lstadd_front(t_list **lst, t_list *new);
-//t_list	*ft_lstnew(void *content);
-//int		ft_lstsize(t_list *lst);
-//t_list	*ft_lstlast(t_list *lst);
-//void	ft_lstadd_back(t_list **lst, t_list *new);
-//void	ft_lstadd_front(t_list **lst, t_list *new);
-//void	ft_lstdelone(t_list *lst, void (*del)(void*));
-//void	ft_lstclear(t_list **lst, void (*del)(void *));
-//void	ft_lstiter(t_list *lst, void (*f)(void *));
-//t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+void	ft_lstadd_front(t_list **lst, t_list *new);
+t_list	*ft_lstnew(void *content);
+int		ft_lstsize(t_list *lst);
+t_list	*ft_lstlast(t_list *lst);
+void	ft_lstadd_back(t_list **lst, t_list *new);
+void	ft_lstadd_front(t_list **lst, t_list *new);
+void	ft_lstdelone(t_list *lst, void (*del)(void*));
+void	ft_lstclear(t_list **lst, void (*del)(void *));
+void	ft_lstiter(t_list *lst, void (*f)(void *));
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 #endif

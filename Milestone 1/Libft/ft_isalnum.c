@@ -6,7 +6,7 @@
 /*   By: lmanzani <lmanzani@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:15:14 by lmanzani          #+#    #+#             */
-/*   Updated: 2025/04/09 16:23:13 by lmanzani         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:45:11 by lmanzani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,3 +20,10 @@ int	ft_isalnum(int c)
 		return (1);
 	return (0);
 }
+/*
+#include <stdio.h>
+
+int main ()
+{
+	printf("%d", ft_isalnum('2'));
+}*/

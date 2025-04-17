@@ -6,7 +6,7 @@
 /*   By: lmanzani <lmanzani@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:11:10 by lmanzani          #+#    #+#             */
-/*   Updated: 2025/04/09 16:14:36 by lmanzani         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:41:25 by lmanzani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,3 +18,10 @@ int	ft_isdigit(int c)
 		return (1);
 	return (0);
 }
+/*
+#include <stdio.h>
+
+int main ()
+{
+	printf("%d",ft_isdigit('1'));
+}*/

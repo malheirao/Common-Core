@@ -6,7 +6,7 @@
 /*   By: lmanzani <lmanzani@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 14:58:43 by lmanzani          #+#    #+#             */
-/*   Updated: 2025/04/10 15:03:14 by lmanzani         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:55:05 by lmanzani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,3 +18,14 @@ int	ft_toupper(int c)
 		c -= 32;
 	return (c);
 }
+/*
+#include <stdio.h>
+
+int main(int argc, char **argv)
+{
+        if (argc == 2)
+        {
+                printf("antes do toupper: %c\n",(*argv[1]));
+                printf("depois do toupper: %c",ft_toupper(*argv[1]));
+        }
+}*/

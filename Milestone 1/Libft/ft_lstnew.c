@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmanzani <lmanzani@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/10 15:01:09 by lmanzani          #+#    #+#             */
-/*   Updated: 2025/04/17 16:54:25 by lmanzani         ###   ########.fr       */
+/*   Created: 2025/04/17 16:17:13 by lmanzani          #+#    #+#             */
+/*   Updated: 2025/04/17 16:27:41 by lmanzani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_tolower(int c)
+t_list	*ft_lstnew(void *content)
 {
-	if (c >= 'A' && c <= 'Z')
-		c += 32;
-	return (c);
-}
-/*
-#include <stdio.h>
+	t_list	*n_node;
 
-int main(int argc, char **argv)
-{
-	if (argc == 2)
-	{
-		printf("antes do tolower: %c\n",(*argv[1]));
-		printf("depois do tolower: %c",ft_tolower(*argv[1]));
-	}
-}*/
+	n_node = (t_list *)malloc(sizeof(t_list));
+	if (!n_node)
+		return (NULL);
+	n_node->content = content;
+	n_node->next = NULL;
+	return (n_node);
+}
