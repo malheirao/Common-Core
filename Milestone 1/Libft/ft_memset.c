@@ -25,3 +25,16 @@ void	*ft_memset(void *s, int c, size_t n)
 	}
 	return (s);
 }
+/*
+#include <stdio.h>
+
+int main (int argc, char **argv)
+{
+	int a = argv[2][0];
+	size_t n = 10;
+	if (argc >= 3)
+	{
+		ft_memset(argv[1], a, n);
+		printf("sua string é: %s", argv[1]);
+	}		
+}*/

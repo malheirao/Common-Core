@@ -28,3 +28,12 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putnbr_fd(n / 10, fd);
 	ft_putchar_fd((n % 10) + '0', fd);
 }
+/*
+#include <stdio.h>
+
+int main(int argc, char **argv)
+{
+    if (argc == 3)
+        ft_putnbr_fd(ft_atoi(argv[1]), ft_atoi(argv[2]));
+    return (0);
+}*/

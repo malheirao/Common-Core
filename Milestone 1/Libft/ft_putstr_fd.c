@@ -23,3 +23,11 @@ void	ft_putstr_fd(char *s, int fd)
 		i++;
 	}
 }
+/*
+int main (int argc, char **argv)
+{
+	int fd = 1;
+	if(argc >= 2)
+		ft_putstr_fd(argv[1], 1);
+	return(0);
+}*/

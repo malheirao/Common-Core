@@ -17,3 +17,12 @@ void	ft_putendl_fd(char *s, int fd)
 	ft_putstr_fd(s, fd);
 	write(fd, "\n", 1);
 }
+/*
+int main (int argc, char **argv)
+{
+	int fd = 1;
+	if(argc >= 2)
+	{
+	ft_putendl_fd(argv[1], fd);
+	}
+}*/

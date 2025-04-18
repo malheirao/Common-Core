@@ -10,42 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-#include "libft.h"
-
-void	*ft_memcpy(void *dst, const void *src, size_t n)
-{
-	if (!dst && !src && n == 0)
-		return (dst);
-	unsigned char	*tmpdst;
-	unsigned char	*tmpsrc;
-
-	tmpdst = (unsigned char *)dst;
-	tmpsrc = (unsigned char *)src;
-	while (n > 0)
-	{
-		*tmpdst = *tmpsrc;
-		tmpdst++;
-		tmpsrc++;
-		n--;
-	}
-	return (dst);
-}*/
-#include "libft.h"
-/*
-void	*ft_memcpy(void *dst, const void *src, size_t n)
-{
-	unsigned char	*tmpdst;
-	unsigned char	*tmpsrc;
-
-	if (!dst && !src && n == 0)
-		return (dst);
-	tmpdst = (unsigned char *)dst;
-	tmpsrc = (unsigned char *)src;
-	while (n--)
-		*tmpdst++ = *tmpsrc++;
-	return (dst);
-}*/
 #include "libft.h"
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
@@ -69,3 +33,15 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	dest = (void *)dest_cpy;
 	return (dest);
 }
+/*
+#include <stdio.h>
+
+int main (int argc, char **argv)
+{	
+	size_t n = 5;
+	if (argc >= 3)
+	{
+		ft_memcpy(argv[1], argv[2], n);
+		printf("sua string copiada é: %s", argv[1]);
+	}
+}*/
