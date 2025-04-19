@@ -6,7 +6,7 @@
 /*   By: lmanzani <lmanzani@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:44:11 by lmanzani          #+#    #+#             */
-/*   Updated: 2025/04/17 17:06:25 by lmanzani         ###   ########.fr       */
+/*   Updated: 2025/04/19 15:25:15 by lmanzani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ int main(int argc, char **argv)
 {
 	if(argc == 2)
 	{
-	printf("sua string é: %s\n o tamanho da sua string é: %zu\n", argv[1], ft_strlen(argv[1]));
+	printf("sua string é: %s\n o tamanho é: %zu\n", argv[1], ft_strlen(argv[1]));
 	}
 }*/

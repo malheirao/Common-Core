@@ -6,7 +6,7 @@
 /*   By: lmanzani <lmanzani@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 16:22:53 by lmanzani          #+#    #+#             */
-/*   Updated: 2025/04/15 11:41:29 by lmanzani         ###   ########.fr       */
+/*   Updated: 2025/04/19 15:23:23 by lmanzani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ int main (int argc, char **argv)
 	size_t n = 3;
 	if(argc >= 3)
 	{
-		printf("o resultado da sua comparação é: %d\n", ft_strncmp(argv[1], argv[2], n));
+		printf("o resultado é: %d\n", ft_strncmp(argv[1], argv[2], n));
 	}
 }*/

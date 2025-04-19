@@ -6,7 +6,7 @@
 /*   By: lmanzani <lmanzani@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 15:28:55 by lmanzani          #+#    #+#             */
-/*   Updated: 2025/04/15 10:58:58 by lmanzani         ###   ########.fr       */
+/*   Updated: 2025/04/19 15:47:15 by lmanzani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,3 +53,14 @@ int	ft_atoi(const char *str)
 	}
 	return (i * sign);
 }
+/*
+#include <stdio.h>
+
+int main (int argc, char **argv)
+{
+	if (argc == 2)
+	{
+		printf("seu atoi e: %d", ft_atoi(argv[1]));
+	}
+	return (0);
+}*/
