@@ -6,7 +6,7 @@
 /*   By: lmanzani <lmanzani@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:08:56 by lmanzani          #+#    #+#             */
-/*   Updated: 2025/05/21 20:46:41 by lmanzani         ###   ########.fr       */
+/*   Updated: 2025/05/21 23:55:43 by lmanzani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,11 @@ int	ft_putstr(char *s)
 
 int	ft_putnbr_base(unsigned long n, char *base, unsigned int baselen)
 {
-	int i;
+	int	i;
 
+	i = 0;
 	if (n >= baselen)
-		i = ft_putnbr_base(n / baselen, base, 1, baselen);
+		i += ft_putnbr_base(n / baselen, base, baselen);
 	i += ft_putchar(base[n % baselen]);
 	return (i);
 }
@@ -54,7 +55,7 @@ int	ft_putnbr(int nb, int i)
 		i++;
 	}
 	if (n > 9)
-		i = ft_putnbr(n / 10, 1);
+		i = ft_putnbr(n / 10, i);
 	i += ft_putchar (n % 10 + '0');
 	return (i);
 }

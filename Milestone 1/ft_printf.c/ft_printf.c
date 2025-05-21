@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmanzani <lmanzani@student.42porto.comr>   +#+  +:+       +#+        */
+/*   By: lmanzani <lmanzani@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 16:16:48 by lmanzani          #+#    #+#             */
-/*   Updated: 2025/05/21 20:29:39 by lmanzani         ###   ########.fr       */
+/*   Updated: 2025/05/21 23:49:36 by lmanzani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,38 +27,44 @@ int	ft_printformat(char specifier, va_list ap)
 		count += ft_putnbr(va_arg(ap, int), 0);
 	else if (specifier == 'u')
 		count += ft_putnbr_base(va_arg(ap, unsigned int),
-				"0123456789", 0, 10);
+				"0123456789", 10);
 	else if (specifier == 'x')
 		count += ft_putnbr_base(va_arg(ap, unsigned int),
-				"0123456789abcdef", 0, 16);
+				"0123456789abcdef", 16);
 	else if (specifier == 'X')
 		count += ft_putnbr_base(va_arg(ap, unsigned int),
-				"0123456789ABCDEF", 0, 16);
-	return(count);
+				"0123456789ABCDEF", 16);
+	return (count);
 }
 
-int	ft_ispercentage(char *str, va_list ap)
+int	ft_ispercentage(const char **str, va_list ap)
 {
 	int	count;
 
 	count = 0;
-	if (*str == '%')
+	if (**str == '%')
 	{
-		str++;
-		if (ft_strchar("cspdiuxX", *str))
-			count += ft_printformat(*str, ap);
-				else
-				count = count + ft_putchar(*str);
+		(*str)++;
+		if (ft_strchar("cspdiuxX", **str))
+		{
+			count += ft_printformat(**str, ap);
+			(*str)++;
+		}
+		else
+			count = count + ft_putchar(*((*str)++));
 	}
 	else
-		count = count + ft_putchar(*str);
+	{
+		count = count + ft_putchar(**str);
+		(*str)++;
+	}
 	return (count);
 }
 
 int	ft_printf(const char *str, ...)
 {
 	va_list	ap;
-	int	count;
+	int		count;
 
 	va_start(ap, str);
 	count = 0;
@@ -68,13 +74,20 @@ int	ft_printf(const char *str, ...)
 	}
 	while (*str != '\0')
 	{
-		count += write(1, &str, 1);
-		++count;
+		count += ft_ispercentage(&str, ap);
 	}
 	va_end(ap);
 	return (count);
 }
+/*
+#include "ft_printf.h"
 
-// fazer o put pointer <<<<
+int main()
+{
+	int i = 42;
+	int count = ft_printf("[%i]\n", 42) - 3;
+	printf("%d\n", count);
+	return (0);
+}*/
 // fazer o header <<<<
 // colocar main <<<<
