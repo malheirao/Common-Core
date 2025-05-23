@@ -6,7 +6,7 @@
 /*   By: lmanzani <lmanzani@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 11:40:19 by lmanzani          #+#    #+#             */
-/*   Updated: 2025/05/09 14:09:53 by lmanzani         ###   ########.fr       */
+/*   Updated: 2025/05/23 18:02:50 by lmanzani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ static char	*clean_stash(char *stash)
 		return (NULL);
 	}
 	i++;
-	if (!stash[i])
+	if (!stash [i])
 	{
 		free(stash);
 		return (NULL);

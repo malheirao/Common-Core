@@ -6,7 +6,7 @@
 /*   By: lmanzani <lmanzani@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 13:33:07 by lmanzani          #+#    #+#             */
-/*   Updated: 2025/05/09 14:35:49 by lmanzani         ###   ########.fr       */
+/*   Updated: 2025/05/23 17:55:40 by lmanzani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	*gnl_strjoin(char *s1, char *s2)
 	len2 = gnl_strlen(s2);
 	new_str = (char *)malloc(len1 + len2 + 1);
 	if (!new_str)
-		return (NULL);
+		return (free(s1), NULL);
 	i = 0;
 	j = 0;
 	while (s1 && s1[i])
@@ -62,7 +62,5 @@ char	*gnl_strjoin(char *s1, char *s2)
 	while (s2 && s2[j])
 		new_str[i++] = s2[j++];
 	new_str[i] = '\0';
-	if (s1)
-		free(s1);
-	return (new_str);
+	return (free(s1), new_str);
 }
