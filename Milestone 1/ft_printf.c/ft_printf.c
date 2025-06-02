@@ -6,7 +6,7 @@
 /*   By: lmanzani <lmanzani@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 16:16:48 by lmanzani          #+#    #+#             */
-/*   Updated: 2025/05/21 23:49:36 by lmanzani         ###   ########.fr       */
+/*   Updated: 2025/06/02 08:58:54 by lmanzani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,33 +61,15 @@ int	ft_ispercentage(const char **str, va_list ap)
 	return (count);
 }
 
-int	ft_printf(const char *str, ...)
+int	ft_printf(const char *format, ...)
 {
-	va_list	ap;
 	int		count;
+	va_list	ap;
 
-	va_start(ap, str);
 	count = 0;
-	if (str == NULL)
-	{
-		return (-1);
-	}
-	while (*str != '\0')
-	{
-		count += ft_ispercentage(&str, ap);
-	}
+	va_start(ap, format);
+	while (*format)
+		count += ft_ispercentage(&format, ap);
 	va_end(ap);
 	return (count);
 }
-/*
-#include "ft_printf.h"
-
-int main()
-{
-	int i = 42;
-	int count = ft_printf("[%i]\n", 42) - 3;
-	printf("%d\n", count);
-	return (0);
-}*/
-// fazer o header <<<<
-// colocar main <<<<

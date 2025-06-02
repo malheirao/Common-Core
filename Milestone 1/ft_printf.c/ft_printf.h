@@ -6,7 +6,7 @@
 /*   By: lmanzani <lmanzani@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 20:04:12 by lmanzani          #+#    #+#             */
-/*   Updated: 2025/05/21 23:32:38 by lmanzani         ###   ########.fr       */
+/*   Updated: 2025/06/02 09:09:54 by lmanzani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ int		ft_putnbr_base(unsigned long n, char *base, unsigned int baselen);
 int		ft_putnbr(int nb, int i);
 char	*ft_strchar(const char *s, int c);
 int		ft_putptr(void *s);
-
+int		ft_printf(const char *format, ...);
 #endif
