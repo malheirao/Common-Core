@@ -6,7 +6,7 @@
 /*   By: lmanzani <lmanzani@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 11:40:19 by lmanzani          #+#    #+#             */
-/*   Updated: 2025/05/23 18:02:50 by lmanzani         ###   ########.fr       */
+/*   Updated: 2025/06/04 15:53:31 by lmanzani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,19 @@
 
 static char	*read_line(int fd, char *stash)
 {
-	char	buffer[BUFFER_SIZE + 1];
+	char	*buffer;
 	ssize_t	bytes_read;
 
+	buffer = (char *)malloc(sizeof(char) * ( BUFFER_SIZE + 1));
 	bytes_read = 1;
 	while (!gnl_strchr(stash, '\n') && bytes_read > 0)
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read < 0)
 		{
+			free (buffer);
 			free(stash);
+			stash = NULL;
 			return (NULL);
 		}
 		if (bytes_read == 0)
@@ -31,8 +34,12 @@ static char	*read_line(int fd, char *stash)
 		buffer[bytes_read] = '\0';
 		stash = gnl_strjoin(stash, buffer);
 		if (!stash)
+		{
+			free (buffer);
 			return (NULL);
+		}
 	}
+	free (buffer);
 	return (stash);
 }
 
@@ -99,6 +106,7 @@ static char	*clean_stash(char *stash)
 	}
 	new_stash = stash_substr_after_nl(stash, i);
 	free(stash);
+	stash = NULL;
 	return (new_stash);
 }
 
