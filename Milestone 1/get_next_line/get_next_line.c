@@ -6,7 +6,7 @@
 /*   By: lmanzani <lmanzani@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 11:40:19 by lmanzani          #+#    #+#             */
-/*   Updated: 2025/06/04 15:53:31 by lmanzani         ###   ########.fr       */
+/*   Updated: 2025/06/04 16:20:53 by lmanzani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static char	*read_line(int fd, char *stash)
 	char	*buffer;
 	ssize_t	bytes_read;
 
-	buffer = (char *)malloc(sizeof(char) * ( BUFFER_SIZE + 1));
+	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	bytes_read = 1;
 	while (!gnl_strchr(stash, '\n') && bytes_read > 0)
 	{
@@ -34,10 +34,7 @@ static char	*read_line(int fd, char *stash)
 		buffer[bytes_read] = '\0';
 		stash = gnl_strjoin(stash, buffer);
 		if (!stash)
-		{
-			free (buffer);
-			return (NULL);
-		}
+			return (free(buffer), NULL);
 	}
 	free (buffer);
 	return (stash);
@@ -93,20 +90,15 @@ static char	*clean_stash(char *stash)
 	i = 0;
 	while (stash[i] && stash[i] != '\n')
 		i++;
+	if (stash[i] == '\n')
+		i++;
 	if (!stash[i])
-	{
-		free(stash);
-		return (NULL);
-	}
-	i++;
-	if (!stash [i])
 	{
 		free(stash);
 		return (NULL);
 	}
 	new_stash = stash_substr_after_nl(stash, i);
 	free(stash);
-	stash = NULL;
 	return (new_stash);
 }
 
@@ -121,6 +113,31 @@ char	*get_next_line(int fd)
 	if (!stash)
 		return (NULL);
 	line = extract_line(stash);
+	if (!line)
+	{
+		if (stash)
+		{
+			free(stash);
+			stash = NULL;
+		}
+		return (NULL);
+	}
 	stash = clean_stash(stash);
 	return (line);
 }
+/*
+#include <fcntl.h>
+#include <stdio.h>
+int main(int argc, char **av)
+{
+    int     fd;
+    char    *line;
+	fd = open(av[1], O_RDONLY);
+    while ((line = get_next_line(fd)))
+	{
+		printf("Linha: %s", line);
+		free(line);
+	}
+	close(fd);
+    return (0);
+}*/
