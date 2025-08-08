@@ -28,6 +28,6 @@ enum
 
 void	void_signal(int signo, void *handler, bool use_siginfo);
 void	void_kill(pid_t pid, int signo);
-int ft_atoi(const char *str);
+int		ft_atoi(const char *str);
 
 #endif

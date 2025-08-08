@@ -6,7 +6,7 @@
 /*   By: lmanzani <lmanzani@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 17:52:25 by lmanzani          #+#    #+#             */
-/*   Updated: 2025/07/28 20:09:08 by lmanzani         ###   ########.fr       */
+/*   Updated: 2025/07/28 20:24:42 by lmanzani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	main(int ac, char **av)
 
 	if (3 != ac)
 	{
-		fputs("Use = ./client_bonus <PID> \"request\"\n", stderr);
+		write(2, "Usage: ./client_bonus <PID> \"message\"\n", 38);
 		exit (EXIT_FAILURE);
 	}
 	oracle = ft_atoi(av[1]);
