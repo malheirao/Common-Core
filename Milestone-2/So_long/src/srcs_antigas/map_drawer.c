@@ -1,8 +1,8 @@
-#include <stdio.h>
-#include <stddef.h>
-#include "../minilibx-linux/mlx.h"
-#define TILE_SIZE 32
-
+//#include <stdio.h>
+//#include <stddef.h>
+//#include "../minilibx-linux/mlx.h"
+//#define TILE_SIZE 32
+/*
 int main()
 {
     void *mlx_connection;
@@ -50,7 +50,7 @@ int main()
     }*/
     
     
-    int offset_x;
+/*    int offset_x;
     int offset_y;
     
     offset_x = (window_width - (map_columns * TILE_SIZE)) / 2;
@@ -80,4 +80,6 @@ int main()
 
     mlx_loop(mlx_connection);
     return 0;
-}
+}*/
+
+CODIGO PAUSADO NO MOMENTO

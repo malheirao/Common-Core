@@ -1,7 +1,7 @@
 /* XPM */
 static char * character_xpm[] = {
 "29 32 88 1",
-" 	c None",
+"A	c None",
 ".	c #071821",
 "+	c #5D1118",
 "@	c #5E1118",
