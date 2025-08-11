@@ -1,6 +1,15 @@
 #ifndef SO_LONG_H
 #define SO_LONG_H
 
+#define KEY_UP	65362
+#define KEY_DOWN 65364
+#define KEY_LEFT 65361
+#define KEY_RIGHT 65363
+
+#define KEY_ESC 65307
+
+#include <stdlib.h>
+
 typedef struct s_game
 {
 	char **map;
@@ -38,9 +47,26 @@ void	free_map(char **map);
 
 void	player_pos(char **map, int *x, int *y);
 void	*load_player_img(void *mlx);
-void	draw_player(void *mlx, void *win, void *img, int x, int y);
 
-int		keypress(int keycode, t_vars *vars);
+int	keypress(int keycode, t_vars *vars);
 void	general_drawer(t_vars *vars);
+int	count_collec(char **map);
+//images.c
+void    *load_image(void *mlx_ptr, char *path);
+void    destroy_image(void *mlx_ptr, void *img);
+int     load_all_images(t_vars *game);
+void    destroy_all_images(t_vars *game);
+
+//drawer.c
+void	draw_tile(t_vars *game, void *img, int x, int y);
+void	draw_map(t_vars *vars);
+void	draw_player(t_vars *vars);
+void	update_window(t_vars *vars);
+
+//movement.c
+int key_handler(int keycode, t_vars *game);
+void move_up_or_down(t_vars *game, int direction);
+void move_right_or_left(t_vars *game, int direction);
+int exit_game(t_vars *game);
 
 #endif
