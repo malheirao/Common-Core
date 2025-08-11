@@ -6,7 +6,7 @@
 /*   By: lmanzani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 17:51:55 by lmanzani          #+#    #+#             */
-/*   Updated: 2025/08/11 18:36:03 by lmanzani         ###   ########.fr       */
+/*   Updated: 2025/08/11 20:17:19 by lmanzani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,10 @@ void move_right_or_left(t_vars *game, int direction)
 	if(game->map[y][new_x] != '1')
 	{
 		game->player_x = new_x;
+		collect(game);
+		finish_game(game);
 		update_window(game);
+		ft_printf("move count: %d\n", ++game->move_count);
 	}
 }
 
@@ -55,7 +58,10 @@ void move_up_or_down(t_vars *game, int direction)
 	if(game->map[new_y][x] != '1')
 	{
 		game->player_y = new_y;
+		collect(game);
+		finish_game(game);
 		update_window(game);
+		ft_printf("move count: %d\n", ++game->move_count);
 	}
 }
 

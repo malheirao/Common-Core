@@ -6,7 +6,7 @@
 /*   By: lmanzani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 19:53:27 by lmanzani          #+#    #+#             */
-/*   Updated: 2025/08/11 16:45:38 by lmanzani         ###   ########.fr       */
+/*   Updated: 2025/08/11 19:22:43 by lmanzani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,24 @@ void	draw_map(t_vars *game)
 	y = 0;
 	while(game->map[y])
 	{
-		ft_printf("[DEBUG] y=%d, game->map[y]=%p, linha='%s'\n", y, (void*)game->map[y], game->map[y]);
 		x = 0;
 		while(game-> map[y][x])
 		{
 			tile = game->map[y][x];
-			ft_printf("[DEBUG] x=%d, y=%d, tile=%c\n", x, y, tile);
 			draw_tile(game, game->img_floor, x, y);
 			if (tile == '1')
 				draw_tile(game, game->img_wall, x, y);
 			else if (tile == 'C')
 				draw_tile(game, game->img_collectible, x, y);
-			else if (tile == 'E')
-				draw_tile(game, game->img_exit_closed, x, y);
+			else if (game->map[y][x] == 'E')
+			{
+				if (game->exit_open == 1)
+					draw_tile(game, game->img_exit_open, x, y);
+				else
+					draw_tile(game, game->img_exit_closed, x, y);
+			}
+			//else if (game-> exit_open == 1)
+				//(game, game->img_exit_open, x, y);
 		x++;
 		}	
 		y++;
@@ -59,14 +64,11 @@ void	draw_map(t_vars *game)
 }
 void	draw_player(t_vars *game)
 {
-	ft_printf("player_x=%d, player_y=%d\n", game->player_x, game->player_y);
-   ft_printf("img_player=%p\n", game->img_player);
 	draw_tile(game, game->img_player, game->player_x, game->player_y);
 }
 
 void	update_window(t_vars *vars)
 {
-	ft_printf("[DEBUG] Entrou em update_window\n");
 	draw_map(vars);
 	draw_player(vars);
 }

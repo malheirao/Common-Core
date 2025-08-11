@@ -31,12 +31,14 @@ typedef struct s_vars
 	void *img_exit_open;
 	void *img_collectible;
 	char **map;
+	int exit_open;
 	int player_x;
 	int player_y;
 	int map_rows;
 	int map_columns;
 	int collected;
 	int total_collectibles;
+	int move_count;
 } t_vars;
 
 // Função que lê o mapa de um arquivo e retorna um array de strings (char **)
@@ -68,5 +70,13 @@ int key_handler(int keycode, t_vars *game);
 void move_up_or_down(t_vars *game, int direction);
 void move_right_or_left(t_vars *game, int direction);
 int exit_game(t_vars *game);
+
+//events.c
+void collect(t_vars *game);
+void total_collected(t_vars *game);
+
+//utils
+void collect_counter(t_vars *game);
+void finish_game(t_vars *game);
 
 #endif

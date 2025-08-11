@@ -6,7 +6,7 @@
 /*   By: lmanzani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 19:33:46 by lmanzani          #+#    #+#             */
-/*   Updated: 2025/08/10 20:23:13 by lmanzani         ###   ########.fr       */
+/*   Updated: 2025/08/11 19:15:43 by lmanzani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <fcntl.h>
@@ -53,7 +53,6 @@ char	**load_map(const char *filename)
     }
     while ((line = get_next_line(fd)))
     {
-        ft_printf("DEBUG: Linha lida: '%s'\n", line);
         if (line_count >= lines_allocated)
         {
             lines_allocated *= 2;
@@ -72,7 +71,6 @@ char	**load_map(const char *filename)
     }
     map[line_count] = NULL;
     close(fd);
-    ft_printf("DEBUG: Linhas carregadas: %d\n", line_count);
     return (map);
 }
 
