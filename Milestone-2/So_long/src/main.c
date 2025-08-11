@@ -64,6 +64,7 @@ int main(int argc, char **argv)
         free_map(vars.map);
         return (1);
     }
+    general_parser(&vars);
     mlx_key_hook(vars.win, key_handler, &vars);
     if (!load_all_images(&vars))
     {

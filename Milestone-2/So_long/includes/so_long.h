@@ -75,8 +75,14 @@ int exit_game(t_vars *game);
 void collect(t_vars *game);
 void total_collected(t_vars *game);
 
-//utils
+//utilsc
 void collect_counter(t_vars *game);
 void finish_game(t_vars *game);
+void general_parser(t_vars *game);
+
+//parsing.c
+void dimension_checker(t_vars *game);
+void check_exits(t_vars *game);
+void check_players(t_vars *game);
 
 #endif

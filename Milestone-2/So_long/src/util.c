@@ -5,10 +5,10 @@
 
 void collect_counter(t_vars *game)
 {
+	int verify;
 	int x;
 	int y;
 	char tile;
-
 
 	game->total_collectibles = 0;
 	y = 0;
@@ -20,11 +20,17 @@ void collect_counter(t_vars *game)
 				tile = game->map[y][x];
 				if (tile == 'C')
 					game->total_collectibles++;
+					verify = 1;
 				x++;
 			}
 		y++;	
-		}	
-}	
+		}
+		if(game->total_collectibles ==0)
+		{
+		ft_printf("You must have at least one collectible");
+		exit(1);
+		}
+}		
 
 void finish_game(t_vars *game)
 {
@@ -45,6 +51,13 @@ void finish_game(t_vars *game)
 			}
 		y++;	
 		}	
+}
+
+void general_parser(t_vars *game)
+{
+	check_players(game);
+	check_exits(game);
+	dimension_checker(game);
 }
 
 /*void move_counter(t_vars *game)
