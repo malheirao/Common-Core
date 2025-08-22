@@ -26,7 +26,7 @@ void check_players(t_vars *game)
 		}
 		if (players != 1)
 		{
-			ft_printf("You can't have more than 1 player!.\n");
+			ft_printf("You can't have more than 1 player!\n");
 			exit(1);
 		}	
 }
@@ -54,21 +54,50 @@ void check_exits(t_vars *game)
 		}
 		if (exits != 1)
 		{
-			ft_printf("You can't have more than 1 exit!.\n");
+			ft_printf("You can't have more than 1 exit!\n");
 			exit(1);
 		}	
 }
 
 void dimension_checker(t_vars *game)
 {
-	if(game-> map_rows == game->map_columns)
-	{
-		ft_printf("The map must be rectangular!");
-		exit(1);
-	}
-	else if (!game->map || !game->map[0])
+	//if(game-> map_rows == game->map_columns)
+	//{
+	//	ft_printf("The map must be rectangular!\n");
+	//	exit(1);
+	//}
+	if (!game->map || !game->map[0])
 	{
 	ft_printf("You must submit a map!");
 		exit(1);
+	}
+}
+
+void random_char_verify(t_vars *game)
+{
+	int i;
+	int x;
+	int y;
+	char tile;
+	char valid_tiles[] = {'0', '1', 'P', 'E', 'C', '\0'};
+
+	y = 0;
+	while (game->map[y])
+	{
+		x = 0;
+		while (game-> map[y][x])
+		{
+			tile = game->map[y][x];
+			i = 0;
+			while(valid_tiles[i] != '\0' && tile != valid_tiles[i])
+				i++;
+			if(valid_tiles[i] == '\0')
+			{
+				ft_printf("Caractere inválido no mapa\n");
+				exit(1);
+			}
+			x++;
+		}
+		y++;
 	}
 }

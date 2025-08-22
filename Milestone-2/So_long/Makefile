@@ -1,8 +1,14 @@
 NAME = so_long
 
-MLX_DIR = minilibx-linux
+# Diretório da MinilibX
+MLX_PATH = minilibx-linux
 MLX_LIB = $(MLX_PATH)/libmlx.a
 MLX_FLAGS = $(MLX_LIB) -lXext -lX11 -lm -lz
+
+# Diretório da LIBFT
+LIBFT_PATH = LIBFT
+LIBFT_LIB = $(LIBFT_PATH)/libft.a
+LIBFT_FLAGS = -I$(LIBFT_PATH)
 
 SRC = src/main.c \
       src/map.c \
@@ -11,20 +17,20 @@ SRC = src/main.c \
       src/movement.c \
       src/events.c \
       src/image.c \
+      src/parsing.c
 
 OBJ = $(SRC:.c=.o)
 
-CC =  cc
- 
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) $(MLX_FLAGS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) $(MLX_FLAGS) $(LIBFT_LIB) -o $(NAME)
 
-%.o: %.c
-	$(CC) $(CFLAGS) -I$(MLX_PATH) -c $< -o $@
+src/%.o: src/%.c
+	$(CC) $(CFLAGS) -Iincludes -I$(MLX_PATH) $(LIBFT_FLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJ)

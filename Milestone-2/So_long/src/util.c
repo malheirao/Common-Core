@@ -58,6 +58,7 @@ void general_parser(t_vars *game)
 	check_players(game);
 	check_exits(game);
 	dimension_checker(game);
+	random_char_verify(game);
 }
 
 /*void move_counter(t_vars *game)

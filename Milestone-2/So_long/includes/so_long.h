@@ -86,5 +86,6 @@ void general_parser(t_vars *game);
 void dimension_checker(t_vars *game);
 void check_exits(t_vars *game);
 void check_players(t_vars *game);
+void random_char_verify(t_vars *game);
 
 #endif
