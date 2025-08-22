@@ -5,11 +5,10 @@
 
 void collect_counter(t_vars *game)
 {
-	int verify;
 	int x;
 	int y;
 	char tile;
-
+	
 	game->total_collectibles = 0;
 	y = 0;
 		while(game->map[y])
@@ -19,8 +18,10 @@ void collect_counter(t_vars *game)
 			{
 				tile = game->map[y][x];
 				if (tile == 'C')
+				{
 					game->total_collectibles++;
-					verify = 1;
+				game->verify = 1;
+				}
 				x++;
 			}
 		y++;	
@@ -36,7 +37,6 @@ void finish_game(t_vars *game)
 {
 	int x;
 	int y;
-	char tile;
 	
 	y = 0;
 		while(game->map[y])
@@ -44,7 +44,7 @@ void finish_game(t_vars *game)
 			x = 0;
 			while(game-> map[y][x])
 			{
-				tile = game->map[y][x];
+			game->tile = game->map[y][x];
 		if (game->map[game->player_y][game->player_x] == 'E')
 					exit_game(game);
 				x++;
