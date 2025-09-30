@@ -39,16 +39,14 @@ char	**load_map(const char *filename)
     char	*line;
     int		lines_allocated = 16;
     int		line_count = 0;
+    int		len;
 
-    ft_printf("DEBUG: Tentando abrir arquivo '%s'\n", filename);
     fd = open(filename, O_RDONLY);
     if (fd < 0) {
-        ft_printf("DEBUG: Falha ao abrir arquivo!\n");
         return (NULL);
     }
     map = (char **)malloc(sizeof(char *) * lines_allocated);
     if (!map) {
-        ft_printf("DEBUG: Falha no malloc!\n");
         return(NULL);
     }
     while ((line = get_next_line(fd)))
@@ -59,12 +57,11 @@ char	**load_map(const char *filename)
             map = grow_map(map, line_count, lines_allocated);
             if (!map)
             {
-               ft_printf("DEBUG: Falha no grow_map!\n");
                 close(fd);
                 return (NULL);
             }
         }
-        int len = ft_strlen(line);
+        len = ft_strlen(line);
         if (len > 0 && line[len - 1] == '\n')
             line[len - 1] = '\0';
         map[line_count++] = line;

@@ -101,10 +101,11 @@ static int	init_vars(t_vars *vars, char *map_path)
 	ft_memset(vars, 0, sizeof(t_vars));
 	vars->mlx = mlx_init();
 	if (!vars->mlx)
-		return (printf("Erro ao inicializar MiniLibX!\n"), 0);
+		return (ft_printf("Erro ao inicializar MiniLibX!\n"), 0);
 	vars->map = load_map(map_path);
 	if (!vars->map)
-		return (printf("Erro ao carregar o mapa: %s\n", map_path), 0);
+		return (ft_printf("Erro ao carregar o mapa: %s\n", map_path), 0);
+	//free map ^
 	vars->map_rows = 0;
 	while (vars->map[vars->map_rows])
 		vars->map_rows++;
@@ -112,7 +113,7 @@ static int	init_vars(t_vars *vars, char *map_path)
 	return (1);
 }
 
-static int	check_map_rectangular(t_vars *vars)
+/* static int	check_map_rectangular(t_vars *vars)
 {
 	for (int i = 0; vars->map[i]; i++)
 	{
@@ -124,7 +125,7 @@ static int	check_map_rectangular(t_vars *vars)
 		}
 	}
 	return (1);
-}
+}*/
 
 static int	create_window_and_images(t_vars *vars)
 {
@@ -134,13 +135,13 @@ static int	create_window_and_images(t_vars *vars)
 	vars->win = mlx_new_window(vars->mlx, width, height, "so_long");
 	if (!vars->win)
 	{
-		printf("Erro ao criar a janela!\n");
+		ft_printf("Erro ao criar a janela!\n");
 		free_map(vars->map);
 		return (0);
 	}
 	if (!load_all_images(vars))
 	{
-		printf("Erro ao carregar imagens!\n");
+		ft_printf("Erro ao carregar imagens!\n");
 		destroy_all_images(vars);
 		free_map(vars->map);
 		return (0);

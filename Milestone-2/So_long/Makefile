@@ -5,7 +5,7 @@ MLX_PATH = minilibx-linux
 MLX_LIB = $(MLX_PATH)/libmlx.a
 MLX_FLAGS = $(MLX_LIB) -lXext -lX11 -lm -lz
 
-# Diretório da LIBFT
+# Diretório da LIBFTcc -Wall -Wextra -Werror src/main.o src/map.o src/drawer.o src/util.o src/movement.o src/events.o src/image.o src/parsing.o minilibx-linux/libmlx.a -lXext -lX11 -lm -lz LIBFT/libft.a
 LIBFT_PATH = LIBFT
 LIBFT_LIB = $(LIBFT_PATH)/libft.a
 LIBFT_FLAGS = -I$(LIBFT_PATH)

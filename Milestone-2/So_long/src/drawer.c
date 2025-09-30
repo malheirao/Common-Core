@@ -31,7 +31,6 @@ void	draw_tile(t_vars *game, void *img, int x, int y)
 
 void	draw_map(t_vars *game)
 {
-	ft_printf("[DEBUG] Entrou em draw_map\n");
 	int		x;
 	int		y;
 	char	tile;
@@ -55,8 +54,6 @@ void	draw_map(t_vars *game)
 				else
 					draw_tile(game, game->img_exit_closed, x, y);
 			}
-			//else if (game-> exit_open == 1)
-				//(game, game->img_exit_open, x, y);
 		x++;
 		}	
 		y++;
