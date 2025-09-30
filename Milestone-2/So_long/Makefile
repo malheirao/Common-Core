@@ -10,14 +10,15 @@ LIBFT_PATH = LIBFT
 LIBFT_LIB = $(LIBFT_PATH)/libft.a
 LIBFT_FLAGS = -I$(LIBFT_PATH)
 
-SRC = src/main.c \
+SRC = src/mainorganizada.c \
       src/map.c \
       src/drawer.c \
       src/util.c \
       src/movement.c \
       src/events.c \
       src/image.c \
-      src/parsing.c
+      src/parsing.c \
+      src/flood_fill.c
 
 OBJ = $(SRC:.c=.o)
 

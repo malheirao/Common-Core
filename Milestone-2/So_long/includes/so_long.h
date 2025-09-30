@@ -9,6 +9,14 @@
 #define KEY_ESC 65307
 
 #include <stdlib.h>
+#include "../LIBFT/libft.h"
+
+typedef struct s_point
+{
+	int x;
+	int y;
+} t_point;
+
 
 typedef struct s_game
 {
@@ -87,5 +95,9 @@ void dimension_checker(t_vars *game);
 void check_exits(t_vars *game);
 void check_players(t_vars *game);
 void random_char_verify(t_vars *game);
+
+// flood_fill.c
+int     flood_fill(t_vars *game);
+char    **copy_mp(t_vars *map);
 
 #endif

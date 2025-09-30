@@ -173,8 +173,8 @@ int	main(int argc, char **argv)
 		return (printf("Uso: %s <mapa.ber>\n", argv[0]), 1);
 	if (!init_vars(&vars, argv[1]))
 		return (1);
-	if (!check_map_rectangular(&vars))
-		return (1);
+	//if (!check_map_rectangular(&vars))
+	//	return (1);
 	general_parser(&vars);
 	if (!create_window_and_images(&vars))
 		return (1);

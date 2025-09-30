@@ -59,16 +59,10 @@ void general_parser(t_vars *game)
 	check_exits(game);
 	dimension_checker(game);
 	random_char_verify(game);
-}
-
-/*void move_counter(t_vars *game)
-{
-	int i;
-	i = 0;
-
-	if (move_right_or_left() || move_up_or_down())
+	if (!flood_fill(game))
 	{
-		i = i + 1;
-		ft_printf("Move counter: %d", i);
+		ft_printf("Erro: caminho impossível!\n");
+		free_map(game->map);
+		exit(1);
 	}
-}*/
+}

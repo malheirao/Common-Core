@@ -1,75 +1,66 @@
 #include "so_long.h"
 
-char **copy_mp(t_map *map);
+static char **copy_map(char **map, int rows)
 {
-	char	**copy_grid;
-	int		y;
+	char **copy;
+	int y;
 
-	y = 0;
-	copy_grid = malloc(sizeof(char *) * (game->height + 1));
-	if (!copy_grid)
+	copy = malloc(sizeof(char *) * (rows + 1));
+	if (!copy)
 		return (NULL);
-	while (y < game->height)
+	y = 0;
+	while (y < rows)
 	{
-		copy_grid[y] = malloc(sizeof(char) * (game->widht + 2));
-		if (!copy_grid[y])
+		copy[y] = ft_strdup(map[y]);
+		if(!copy[y])
 		{
-			while (--y >= 0)
-				free(copy_grid[y]);
-			free(copy_grid)
-			return (NULL);
+			int j = 0;
+			while (j < y)
+				free(copy[j++]);
+			free(copy);
+			return NULL;
 		}
-		ft_strlcpy(grid_copy[y], game->map[y], game->widht + 2);
 		y++;
 	}
-	copy_grid[game->height] = NULL;
-	return (copy_grid);
+	copy[rows] = NULL;
+	return (copy);
 }
 
-void	fill(char **grid, t_game *map, t_vars pos)
+static void fill(char **grid, int x, int y, int *collect, int *exit)
 {
-	int g_w;
-	int g_h;
-
-	g_w = map->width;
-	g_h = map->height;
-	if (pos.x < 0 || pos.y < 0 || pos.x > g_w || pos.y > g_h)
-		return ;
-	if (map[pos.y][pos.x] == WALL || grid[pos.y][pos.x] == 'V')
-		return ;
-	if (map[pos.y][pos.x] == EXIT)
-		map->//accessible_exit = 1; = 1;
-	if (map[pos.y][pos.x] == COLLECT)
-			map->accesible_collectibles++;
-	map[pos.y][pos.x] = 'V';
-	fill(grid, map, (t_vars){pos.x + 1, pos.y});
-	fill(grid, map, (t_vars){pos.x - 1, pos.y});
-	fill(grid, map, (t_vars){pos.x, pos.y - 1});
-	fill(grid, map, (t_vars){pos.x1, pos.y + 1});
+	if(y < 0 || grid[y] == NULL)
+		return;
+	if (x < 0 || x >= (int)ft_strlen(grid[y]))
+		return;
+	if (grid[y][x] == '1' || grid[y][x] == 'V')
+		return;
+	if (grid[y][x] == 'E')
+		(*exit)++;
+	if (grid[y][x] == 'C')
+		(*collect)++;
+	grid[y][x] = 'V';
+	fill(grid, x + 1, y, collect, exit);
+	fill(grid, x - 1, y, collect, exit);
+	fill(grid, x, y + 1, collect, exit);
+	fill(grid, x, y - 1, collect, exit);
 	return ; 
 }
 
-int	flood_fill(t_vars *map)
+int	flood_fill(t_vars *game)
 {
-	t_vars pos;
-	char 	**new_grid;
+	int found_collect;
+	int found_exit;
+	char **map_copy;
 
-	new_grid = copy_mp(map);
-	if (!new_grid)
-	//criar funcao de erro no mapa	map_error("...")
-	pos.y = map->player_pos.y;
-	pos.x = map->player_pos.x;
-	fill(new_grid, map, pos);
-	if(map->accessible_exit == 0)
-	{
-		//free_map
-		//map_error_free(new_grid, "...");
-	}
-	if(map->accessible_collectibles != map->collectible_counter)
-	{
-		//free_map
-		//map_error_free(new_grid, "...");
-	}
-	free_map(new_grid);
-	return(1);
+	found_collect = 0;
+	found_exit = 0;
+	map_copy = copy_map(game->map, game->map_rows);
+	if(!map_copy)
+		return (0);
+	fill(map_copy, game->player_x, game->player_y, &found_collect, &found_exit);
+	ft_printf("DEBUG: Achei %d%d colecionaveis, %d saída(s)\n", found_collect, game->total_collectibles, found_exit);
+	free_map(map_copy);
+	if (found_collect == game->total_collectibles && found_exit > 0)
+		return (1);
+	return (0);
 }
