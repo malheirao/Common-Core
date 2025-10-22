@@ -61,11 +61,7 @@ void check_exits(t_vars *game)
 
 void dimension_checker(t_vars *game)
 {
-	//if(game-> map_rows == game->map_columns)
-	//{
-	//	ft_printf("The map must be rectangular!\n");
-	//	exit(1);
-	//}
+	
 	if (!game->map || !game->map[0])
 	{
 	ft_printf("You must submit a map!");

@@ -120,7 +120,7 @@ static int	init_vars(t_vars *vars, char *map_path)
 		if ((int)ft_strlen(vars->map[i]) != vars->map_columns)
 		{
 			printf("Erro: linha %d do mapa tem tamanho diferente!\n", i);
-			free_map(vars->map);
+			free_map(vars->map, vars->map_rows);
 			return (0);
 		}
 	}
@@ -135,15 +135,20 @@ static int	create_window_and_images(t_vars *vars)
 	vars->win = mlx_new_window(vars->mlx, width, height, "so_long");
 	if (!vars->win)
 	{
+<<<<<<< HEAD
 		ft_printf("Erro ao criar a janela!\n");
 		free_map(vars->map);
+=======
+		printf("Erro ao criar a janela!\n");
+		free_map(vars->map, vars->map_rows);
+>>>>>>> 9aed318 (new changes)
 		return (0);
 	}
 	if (!load_all_images(vars))
 	{
 		ft_printf("Erro ao carregar imagens!\n");
 		destroy_all_images(vars);
-		free_map(vars->map);
+		free_map(vars->map, vars->map_rows);
 		return (0);
 	}
 	return (1);
@@ -156,7 +161,7 @@ static int	init_game_state(t_vars *vars)
 	{
 		printf("Erro: posição do jogador não encontrada!\n");
 		destroy_all_images(vars);
-		free_map(vars->map);
+		free_map(vars->map, vars->map_rows);
 		return (0);
 	}
 	collect_counter(vars);
@@ -176,6 +181,12 @@ int	main(int argc, char **argv)
 	//if (!check_map_rectangular(&vars))
 	//	return (1);
 	general_parser(&vars);
+	if (!is_map_valid(&vars))
+	{	exit_game(&vars);
+		ft_printf("VALIDOU");
+	}
+	else
+		ft_printf("INVALID MAP");
 	if (!create_window_and_images(&vars))
 		return (1);
 	if (!init_game_state(&vars))
@@ -185,6 +196,6 @@ int	main(int argc, char **argv)
 	mlx_loop(vars.mlx);
 
 	destroy_all_images(&vars);
-	free_map(vars.map);
+	free_map(vars.map, vars.map_rows);
 	return (0);
 }

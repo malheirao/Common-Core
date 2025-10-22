@@ -39,6 +39,7 @@ char	**load_map(const char *filename)
     char	*line;
     int		lines_allocated = 16;
     int		line_count = 0;
+<<<<<<< HEAD
     int		len;
 
     fd = open(filename, O_RDONLY);
@@ -47,6 +48,18 @@ char	**load_map(const char *filename)
     }
     map = (char **)malloc(sizeof(char *) * lines_allocated);
     if (!map) {
+=======
+    int 	len;
+    
+    fd = open(filename, O_RDONLY);
+    if (fd < 0) 
+    {
+        return (NULL);
+    }
+    map = (char **)malloc(sizeof(char *) * lines_allocated);
+    if (!map) 
+    {
+>>>>>>> 9aed318 (new changes)
         return(NULL);
     }
     while ((line = get_next_line(fd)))
@@ -61,7 +74,11 @@ char	**load_map(const char *filename)
                 return (NULL);
             }
         }
+<<<<<<< HEAD
         len = ft_strlen(line);
+=======
+	len = ft_strlen(line);
+>>>>>>> 9aed318 (new changes)
         if (len > 0 && line[len - 1] == '\n')
             line[len - 1] = '\0';
         map[line_count++] = line;
@@ -71,13 +88,14 @@ char	**load_map(const char *filename)
     return (map);
 }
 
-void	free_map(char **map)
+void	free_map(char **map, int rows)
 {
-	int i = 0;
+	int 	i;
+	i = 0;
 
 	if (!map)
 		return ;
-	while (map[i])
+	while (i < rows)
 	{
 		free(map[i]);
 		i++;

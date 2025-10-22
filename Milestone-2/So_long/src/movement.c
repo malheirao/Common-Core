@@ -68,7 +68,7 @@ void move_up_or_down(t_vars *game, int direction)
 int exit_game(t_vars *game)
 {
     destroy_all_images(game);
-    free_map(game->map);
+    free_map(game->map, game->map_rows);
     if (game->win)
         mlx_destroy_window(game->mlx, game->win);
     if (game->mlx)

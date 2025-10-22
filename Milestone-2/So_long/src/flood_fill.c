@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include "so_long.h"
 
 static char **copy_map(char **map, int rows)
@@ -63,4 +64,51 @@ int	flood_fill(t_vars *game)
 	if (found_collect == game->total_collectibles && found_exit > 0)
 		return (1);
 	return (0);
+=======
+#include "../includes/so_long.h"
+#include "../minilibx-linux/mlx.h"
+#include <stdio.h>
+#include "../LIBFT/libft.h"
+
+void fill (char **tab, int rows, int cols, char target, int row, int col)
+{
+	if (row < 0 || col < 0 || row >= rows || col >= cols)
+		return;
+	if (tab[row][col] == 'F' || tab[row][col] != target)
+		return;
+	tab[row][col] = 'F';
+	fill(tab, rows, cols, target, row, col + 1);
+	fill(tab, rows, cols, target, row, col - 1);
+	fill(tab, rows, cols, target, row + 1, col);
+	fill(tab, rows, cols, target, row - 1, col);
+	printf("fill chamado em row=%d col=%d\n", row, col);
+}
+
+void flood_fill(t_vars *game)
+{
+	char target;
+	target = game->map[game->player_y][game->player_x];
+	fill(game->map, game->map_rows, game->map_columns, target, game->player_y, game->player_x);
+	ft_printf("flood_fill validado");
+}
+	
+char **dup_map(char **original, int rows, int cols)
+{
+    char **copy = malloc(sizeof(char *) * rows);
+    int i = 0;
+    while (i < rows)
+    {
+        int j = 0;
+        copy[i] = malloc(cols + 1);
+        while (j < cols)
+        {
+            copy[i][j] = original[i][j];
+            j++;
+        }
+        copy[i][j] = '\0';
+        i++;
+	ft_printf("VALIDOU DUP MAP");
+    }
+    return copy;
+>>>>>>> 9aed318 (new changes)
 }

@@ -18,15 +18,15 @@ typedef struct s_point
 } t_point;
 
 
-typedef struct s_game
-{
-	char **map;
-	int width;
-	int height;
-	int n_collect;
-	int n_player;
-	int n_exit;
-} t_game;
+//typedef struct s_game
+//{//
+//	char **map;
+//	int width;
+//	int height;
+//	int n_collect;
+//	int n_player;
+//	int n_exit;
+//} t_game;
 
 typedef struct s_vars
 {
@@ -49,13 +49,14 @@ typedef struct s_vars
 	int total_collectibles;
 	int move_count;
 	int verify;
+	int size;
 } t_vars;
 
 // Função que lê o mapa de um arquivo e retorna um array de strings (char **)
 char	**load_map(const char *filename);
 
 // Função que libera toda a memória de um mapa carregado
-void	free_map(char **map);
+void	free_map(char **map, int rows);
 
 void	player_pos(char **map, int *x, int *y);
 void	*load_player_img(void *mlx);
@@ -95,6 +96,10 @@ void dimension_checker(t_vars *game);
 void check_exits(t_vars *game);
 void check_players(t_vars *game);
 void random_char_verify(t_vars *game);
+void flood_fill(t_vars *game);
+int is_map_valid(t_vars *game);
+char **dup_map(char **original, int rows, int cols);
+void fill(char **tab, int rows, int cols, char target, int row, int col);
 
 // flood_fill.c
 int     flood_fill(t_vars *game);
