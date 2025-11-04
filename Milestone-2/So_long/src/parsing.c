@@ -89,7 +89,7 @@ void random_char_verify(t_vars *game)
 				i++;
 			if(valid_tiles[i] == '\0')
 			{
-				ft_printf("Caractere inválido no mapa\n");
+				ft_printf("Invalid char on the map\n");
 				exit(1);
 			}
 			x++;

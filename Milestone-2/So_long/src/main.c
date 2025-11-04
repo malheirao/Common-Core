@@ -106,6 +106,8 @@ static int	init_vars(t_vars *vars, char *map_path)
 	if (!vars->map)
 		return (ft_printf("Erro ao carregar o mapa: %s\n", map_path), 0);
 	//free map ^
+	if (!vars->map[0])
+		return (ft_printf("You can not submit an empty map."));
 	vars->map_rows = 0;
 	while (vars->map[vars->map_rows])
 		vars->map_rows++;
@@ -135,13 +137,8 @@ static int	create_window_and_images(t_vars *vars)
 	vars->win = mlx_new_window(vars->mlx, width, height, "so_long");
 	if (!vars->win)
 	{
-<<<<<<< HEAD
 		ft_printf("Erro ao criar a janela!\n");
-		free_map(vars->map);
-=======
-		printf("Erro ao criar a janela!\n");
 		free_map(vars->map, vars->map_rows);
->>>>>>> 9aed318 (new changes)
 		return (0);
 	}
 	if (!load_all_images(vars))
@@ -182,11 +179,12 @@ int	main(int argc, char **argv)
 	//	return (1);
 	general_parser(&vars);
 	if (!is_map_valid(&vars))
-	{	exit_game(&vars);
+	{	
+		exit_game(&vars);
 		ft_printf("VALIDOU");
 	}
-	else
-		ft_printf("INVALID MAP");
+	//else
+	//	ft_printf("INVALID MAP");
 	if (!create_window_and_images(&vars))
 		return (1);
 	if (!init_game_state(&vars))

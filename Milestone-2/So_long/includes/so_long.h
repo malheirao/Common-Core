@@ -10,6 +10,7 @@
 
 #include <stdlib.h>
 #include "../LIBFT/libft.h"
+#include "../minilibx-linux/mlx.h"
 
 typedef struct s_point
 {
@@ -100,9 +101,5 @@ void flood_fill(t_vars *game);
 int is_map_valid(t_vars *game);
 char **dup_map(char **original, int rows, int cols);
 void fill(char **tab, int rows, int cols, char target, int row, int col);
-
-// flood_fill.c
-int     flood_fill(t_vars *game);
-char    **copy_mp(t_vars *map);
 
 #endif

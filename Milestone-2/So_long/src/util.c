@@ -53,45 +53,36 @@ void finish_game(t_vars *game)
 		}	
 }
 
-
-
-
-
-
-
 void general_parser(t_vars *game)
 {
 	check_players(game);
 	check_exits(game);
 	dimension_checker(game);
-	random_char_verify(game);
-<<<<<<< HEAD
-	if (!flood_fill(game))
+	random_char_verify(game);	
+	player_pos(game->map, &game->player_x, &game->player_y);
+//	if (game->player_x == -1 || game->player_y == -1)
+//	{
+//		ft_printf("ERROR: Player 'P' not found on map!\n");
+//		exit_game(game);
+//	}	
+	if (!is_map_valid(game))
 	{
-		ft_printf("Erro: caminho impossível!\n");
-		free_map(game->map);
-		exit(1);
+	exit_game(game);
+		ft_printf("VALIDOU");
 	}
-=======
-	//is_map_valid(game);
-	//if (!is_map_valid(game))
-	//{	exit_game(game);
-	//	ft_printf("VALIDOU");
-	//}
-	//else
-	//	ft_printf("INVALID MAP");
-	
-
+	else
+	{
+		ft_printf("The submited map is not valid.");
+			exit_game(game);
+	}
 }
 
 int is_map_valid(t_vars *game)
 {
-	printf("Chamando fill em row=%d col=%d\n", game->player_y, game->player_x);
     char **map_copy = dup_map(game->map, game->map_rows, game->map_columns);
     if (!map_copy)
-        return 0; 
-    printf("COPIA FEITA\n");
-    //flood_fill(game);
+		return 0; 
+	map_copy[game->player_y][game->player_x] = '0';
     fill(map_copy, game->map_rows, game->map_columns, '0', game->player_y, game->player_x);
     int valid = 1;
     int y = 0;
@@ -106,8 +97,11 @@ int is_map_valid(t_vars *game)
         }
         y++;
     }
-
+//	if (game->player_x == -1 || game->player_y == -1)
+///	{
+//		ft_printf("Player not found!\n");
+//		return 0;
+//	}
     free_map(map_copy, game->map_rows);
     return valid;
->>>>>>> 9aed318 (new changes)
 }

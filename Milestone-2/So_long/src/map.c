@@ -6,7 +6,7 @@
 /*   By: lmanzani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 19:33:46 by lmanzani          #+#    #+#             */
-/*   Updated: 2025/08/11 19:15:43 by lmanzani         ###   ########.fr       */
+/*   Updated: 2025/11/04 17:51:44 by lmanzani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <fcntl.h>
@@ -39,27 +39,17 @@ char	**load_map(const char *filename)
     char	*line;
     int		lines_allocated = 16;
     int		line_count = 0;
-<<<<<<< HEAD
-    int		len;
-
-    fd = open(filename, O_RDONLY);
-    if (fd < 0) {
-        return (NULL);
-    }
-    map = (char **)malloc(sizeof(char *) * lines_allocated);
-    if (!map) {
-=======
     int 	len;
     
     fd = open(filename, O_RDONLY);
     if (fd < 0) 
     {
+		close(fd);
         return (NULL);
     }
     map = (char **)malloc(sizeof(char *) * lines_allocated);
     if (!map) 
     {
->>>>>>> 9aed318 (new changes)
         return(NULL);
     }
     while ((line = get_next_line(fd)))
@@ -74,11 +64,7 @@ char	**load_map(const char *filename)
                 return (NULL);
             }
         }
-<<<<<<< HEAD
-        len = ft_strlen(line);
-=======
 	len = ft_strlen(line);
->>>>>>> 9aed318 (new changes)
         if (len > 0 && line[len - 1] == '\n')
             line[len - 1] = '\0';
         map[line_count++] = line;

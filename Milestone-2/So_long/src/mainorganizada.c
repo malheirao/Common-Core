@@ -1,5 +1,4 @@
 #include "../includes/so_long.h"
-#include "../minilibx-linux/mlx.h"
 #include "../LIBFT/libft.h"
 
 int	main(int argc, char **argv)

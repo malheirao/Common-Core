@@ -10,7 +10,7 @@ LIBFT_PATH = LIBFT
 LIBFT_LIB = $(LIBFT_PATH)/libft.a
 LIBFT_FLAGS = -I$(LIBFT_PATH)
 
-SRC = src/mainorganizada.c \
+SRC = src/main.c \
       src/map.c \
       src/drawer.c \
       src/util.c \
