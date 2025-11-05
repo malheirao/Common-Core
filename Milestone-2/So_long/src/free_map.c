@@ -1,36 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events.c                                           :+:      :+:    :+:   */
+/*   free_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmanzani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/11 18:43:37 by lmanzani          #+#    #+#             */
-/*   Updated: 2025/11/05 18:42:45 by lmanzani         ###   ########.fr       */
+/*   Created: 2025/11/05 19:00:22 by lmanzani          #+#    #+#             */
+/*   Updated: 2025/11/05 19:00:55 by lmanzani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-#include "../minilibx-linux/mlx.h"
 #include "../LIBFT/libft.h"
 
-void	collect(t_vars *game)
+void	free_map(char **map, int rows)
 {
-	if (game->map[game->player_y][game->player_x] == 'C')
+	int	i;
+
+	i = 0;
+	if (!map)
+		return ;
+	while (i < rows)
 	{
-		game->collected++;
-		game->map[game->player_y][game->player_x] = '0';
-		ft_printf("Collected:%d of %d\n", game->collected,
-			game->total_collectibles);
-		total_collected(game);
+		free(map[i]);
+		i++;
 	}
+	free(map);
 }
 
-void	total_collected(t_vars *game)
+void	player_pos(char **map, int *x, int *y)
 {
-	if (game->collected == game->total_collectibles)
+	int	i;
+	int	j;
+
+	i = 0;
+	while (map[i])
 	{
-		game->exit_open = 1;
-		update_window(game);
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == 'P')
+			{
+				*x = j;
+				*y = i;
+				return ;
+			}
+			j++;
+		}
+		i++;
 	}
+	*x = -1;
+	*y = -1;
 }

@@ -6,7 +6,7 @@
 /*   By: lmanzani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 19:53:27 by lmanzani          #+#    #+#             */
-/*   Updated: 2025/08/11 19:22:43 by lmanzani         ###   ########.fr       */
+/*   Updated: 2025/11/05 18:49:32 by lmanzani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	draw_tile(t_vars *game, void *img, int x, int y)
 	offset_x = 0;
 	offset_y = 0;
 	mlx_put_image_to_window(game->mlx, game-> win, img,
-			offset_x + x * TILE_SIZE, offset_y + y * TILE_SIZE);
+		offset_x + x * TILE_SIZE, offset_y + y * TILE_SIZE);
 }
 
 void	draw_map(t_vars *game)
@@ -36,10 +36,10 @@ void	draw_map(t_vars *game)
 	char	tile;
 
 	y = 0;
-	while(game->map[y])
+	while (game->map[y])
 	{
 		x = 0;
-		while(game-> map[y][x])
+		while (game-> map[y][x])
 		{
 			tile = game->map[y][x];
 			draw_tile(game, game->img_floor, x, y);
@@ -54,11 +54,12 @@ void	draw_map(t_vars *game)
 				else
 					draw_tile(game, game->img_exit_closed, x, y);
 			}
-		x++;
-		}	
+			x++;
+		}
 		y++;
 	}
 }
+
 void	draw_player(t_vars *game)
 {
 	draw_tile(game, game->img_player, game->player_x, game->player_y);
@@ -69,4 +70,3 @@ void	update_window(t_vars *vars)
 	draw_map(vars);
 	draw_player(vars);
 }
-

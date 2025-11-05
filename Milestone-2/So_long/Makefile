@@ -18,7 +18,8 @@ SRC = src/main.c \
       src/events.c \
       src/image.c \
       src/parsing.c \
-      src/flood_fill.c
+      src/flood_fill.c \
+	  src/free_map.c
 
 OBJ = $(SRC:.c=.o)
 

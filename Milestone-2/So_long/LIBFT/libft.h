@@ -6,7 +6,7 @@
 /*   By: lmanzani <lmanzani@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:03:14 by lmanzani          #+#    #+#             */
-/*   Updated: 2025/04/17 16:14:44 by lmanzani         ###   ########.fr       */
+/*   Updated: 2025/11/05 17:47:28 by lmanzani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stddef.h>
-#include "ft_printf/ft_printf.h"
+# include "ft_printf/ft_printf.h"
 # include "./get_next_line/get_next_line.h"
 
 typedef struct s_list

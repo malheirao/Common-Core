@@ -6,7 +6,7 @@
 /*   By: lmanzani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 19:41:02 by lmanzani          #+#    #+#             */
-/*   Updated: 2025/08/22 18:23:20 by lmanzani         ###   ########.fr       */
+/*   Updated: 2025/11/05 18:47:57 by lmanzani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	*load_image(void *mlx_ptr, char *path)
 	void	*img;
 
 	img = mlx_xpm_file_to_image(mlx_ptr, path, &w, &h);
-	if(!img)
+	if (!img)
 		ft_printf("fail loading image: %s\n", path);
-	return img;
+	return (img);
 }
 
 void	destroy_image(void *mlx_ptr, void *img)
@@ -32,7 +32,7 @@ void	destroy_image(void *mlx_ptr, void *img)
 		mlx_destroy_image(mlx_ptr, img);
 }
 
-int load_all_images(t_vars *game)
+int	load_all_images(t_vars *game)
 {
 	game->img_wall = load_image(game->mlx, "textures/wall.xpm");
 	game->img_floor = load_image(game->mlx, "textures/floor.xpm");
@@ -40,19 +40,19 @@ int load_all_images(t_vars *game)
 	game->img_exit_open = load_image(game->mlx, "textures/open_door.xpm");
 	game->img_exit_closed = load_image(game->mlx, "textures/closed_door.xpm");
 	game->img_collectible = load_image(game->mlx, "textures/key.xpm");
-	if (!game->img_wall || !game->img_floor || !game->img_player ||
-			!game->img_exit_open || !game->img_exit_closed || !game->img_collectible)
+	if (!game->img_wall || !game->img_floor || !game->img_player)
+		return (0);
+	if (!game->img_exit_open || !game->img_exit_closed ||!game->img_collectible)
 		return (0);
 	return (1);
 }
 
-void destroy_all_images(t_vars *game)
-
+void	destroy_all_images(t_vars *game)
 {
-    destroy_image(game->mlx, game->img_wall);
-    destroy_image(game->mlx, game->img_floor);
-    destroy_image(game->mlx, game->img_player);
-    destroy_image(game->mlx, game->img_exit_closed);
-    destroy_image(game->mlx, game->img_exit_open);
-    destroy_image(game->mlx, game->img_collectible);
+	destroy_image(game->mlx, game->img_wall);
+	destroy_image(game->mlx, game->img_floor);
+	destroy_image(game->mlx, game->img_player);
+	destroy_image(game->mlx, game->img_exit_closed);
+	destroy_image(game->mlx, game->img_exit_open);
+	destroy_image(game->mlx, game->img_collectible);
 }

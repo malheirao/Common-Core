@@ -6,7 +6,7 @@
 /*   By: lmanzani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 17:51:55 by lmanzani          #+#    #+#             */
-/*   Updated: 2025/08/11 20:17:19 by lmanzani         ###   ########.fr       */
+/*   Updated: 2025/11/05 19:06:56 by lmanzani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../minilibx-linux/mlx.h"
 #include "../LIBFT/libft.h"
 
-int key_handler(int keycode, t_vars *game)
+int	key_handler(int keycode, t_vars *game)
 {
 	if (keycode == KEY_LEFT)
 		move_right_or_left(game, -1);
@@ -29,15 +29,14 @@ int key_handler(int keycode, t_vars *game)
 	return (0);
 }
 
-void move_right_or_left(t_vars *game, int direction)
+void	move_right_or_left(t_vars *game, int direction)
 {
-	int y;
-	int new_x;
+	int	y;
+	int	new_x;
 
 	y = game->player_y;
 	new_x = game-> player_x + direction;
-
-	if(game->map[y][new_x] != '1')
+	if (game->map[y][new_x] != '1')
 	{
 		game->player_x = new_x;
 		collect(game);
@@ -47,15 +46,14 @@ void move_right_or_left(t_vars *game, int direction)
 	}
 }
 
-void move_up_or_down(t_vars *game, int direction)
+void	move_up_or_down(t_vars *game, int direction)
 {
-	int x;
-	int new_y;
+	int	x;
+	int	new_y;
 
 	x = game->player_x;
 	new_y = game-> player_y + direction;
-
-	if(game->map[new_y][x] != '1')
+	if (game->map[new_y][x] != '1')
 	{
 		game->player_y = new_y;
 		collect(game);
@@ -65,16 +63,15 @@ void move_up_or_down(t_vars *game, int direction)
 	}
 }
 
-int exit_game(t_vars *game)
+int	exit_game(t_vars *game)
 {
-    destroy_all_images(game);
-    free_map(game->map, game->map_rows);
-    if (game->win)
-        mlx_destroy_window(game->mlx, game->win);
-    if (game->mlx)
-        mlx_destroy_display(game->mlx);
-    free(game->mlx);
-    exit(0);
-    return (0);
+	destroy_all_images(game);
+	free_map(game->map, game->map_rows);
+	if (game->win)
+		mlx_destroy_window(game->mlx, game->win);
+	if (game->mlx)
+		mlx_destroy_display(game->mlx);
+	free(game->mlx);
+	exit(0);
+	return (0);
 }
-
