@@ -26,10 +26,10 @@ void collect_counter(t_vars *game)
 			}
 		y++;	
 		}
-		if(game->total_collectibles ==0)
+		if(game->total_collectibles == 0)
 		{
 		ft_printf("You must have at least one collectible");
-		exit(1);
+		exit_game(game);
 		}
 }		
 
@@ -60,22 +60,12 @@ void general_parser(t_vars *game)
 	dimension_checker(game);
 	random_char_verify(game);	
 	player_pos(game->map, &game->player_x, &game->player_y);
-//	if (game->player_x == -1 || game->player_y == -1)
-//	{
-//		ft_printf("ERROR: Player 'P' not found on map!\n");
-//		exit_game(game);
-//	}	
-	if (!is_map_valid(game))
-	{
-	exit_game(game);
-		ft_printf("VALIDOU");
-	}
-	else
-	{
-		ft_printf("The submited map is not valid.");
-			exit_game(game);
-	}
+	//if (!is_map_valid(game))
+	//{
+	//	ft_printf("The submited map is not valid.");
+	//		exit_game(game);
 }
+
 
 int is_map_valid(t_vars *game)
 {

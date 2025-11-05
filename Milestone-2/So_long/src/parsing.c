@@ -24,7 +24,7 @@ void check_players(t_vars *game)
 			}
 		y++;	
 		}
-		if (players != 1)
+		if (players > 1)
 		{
 			ft_printf("You can't have more than 1 player!\n");
 			exit(1);

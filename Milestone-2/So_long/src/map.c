@@ -6,7 +6,7 @@
 /*   By: lmanzani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 19:33:46 by lmanzani          #+#    #+#             */
-/*   Updated: 2025/11/04 17:51:44 by lmanzani         ###   ########.fr       */
+/*   Updated: 2025/11/05 17:21:07 by lmanzani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <fcntl.h>
@@ -26,6 +26,11 @@ static char **grow_map(char **map, int old_size, int new_size)
 	while (i < old_size)
 	{
 		new_map[i] = map[i];
+		i++;
+	}
+	while (i < new_size)
+	{
+		new_map[i] = NULL;
 		i++;
 	}
 	free(map);
@@ -87,15 +92,6 @@ void	free_map(char **map, int rows)
 		i++;
 	}
 	free(map);
-}
-int count_collec(char **map)
-{
-    int x, y, count = 0;
-    for (y = 0; map[y]; y++)
-        for (x = 0; map[y][x]; x++)
-            if (map[y][x] == 'C')
-                count++;
-    return count;
 }
 
 void	player_pos(char **map, int *x, int *y)
