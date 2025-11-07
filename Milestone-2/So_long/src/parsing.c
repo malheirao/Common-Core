@@ -6,7 +6,7 @@
 /*   By: lmanzani <lmanzani@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 18:55:42 by lmanzani          #+#    #+#             */
-/*   Updated: 2025/11/05 18:59:03 by lmanzani         ###   ########.fr       */
+/*   Updated: 2025/11/07 19:36:56 by lmanzani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	check_players(t_vars *game)
 	}
 	if (players != 1)
 	{
-		ft_printf("Must have exactly 1 player!\n");
+		ft_printf("You must have exactly 1 player!\n");
 		exit_game(game);
 	}
 }
@@ -79,7 +79,7 @@ void	check_exits(t_vars *game)
 	}
 	if (exits != 1)
 	{
-		ft_printf("Must have exactly 1 exit!\n");
+		ft_printf("You must have exactly 1 exit!\n");
 		exit_game(game);
 	}
 }
@@ -87,34 +87,25 @@ void	check_exits(t_vars *game)
 void	check_surrounded(t_vars *game)
 {
 	int	y;
-	int	x;
 
 	y = 0;
 	while (y < game->map_rows)
 	{
-		if (game->map[y][0] != '1'
-				|| game->map[y][game->map_columns - 1] != '1')
+		if (game->map[y][0] != '1' ||
+			game->map[y][game->map_columns - 1] != '1')
 		{
 			ft_printf("Map not surrounded by walls!\n");
 			exit_game(game);
 		}
 		y++;
-		if (y == game->map_rows - 1)
-			break ;
 	}
-	y = 1;
-	while (y < game->map_rows - 1)
+	y = 0;
+	while (y < game->map_columns)
 	{
-		x = 0;
-		while (x < game->map_columns)
+		if (game->map[0][y] != '1' || game->map[game->map_rows - 1][y] != '1')
 		{
-			if ((x == 0 || x == game->map_columns - 1)
-				&& game->map[y][x] != '1')
-			{
-				ft_printf("Map not surrounded by walls!\n");
-				exit_game(game);
-			}
-			x++;
+			ft_printf("Map not surrounded by walls!\n");
+			exit_game(game);
 		}
 		y++;
 	}
@@ -133,7 +124,7 @@ void	random_char_verify(t_vars *game)
 		{
 			if (!is_valid_char(game->map[y][x]))
 			{
-				ft_printf("Invalid char!\n");
+				ft_printf("Invalid char on the map\n");
 				exit_game(game);
 			}
 			x++;

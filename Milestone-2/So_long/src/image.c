@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   image.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmanzani <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lmanzani <lmanzani@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 19:41:02 by lmanzani          #+#    #+#             */
-/*   Updated: 2025/11/05 18:47:57 by lmanzani         ###   ########.fr       */
+/*   Updated: 2025/11/07 19:17:45 by lmanzani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,19 @@
 #include "../minilibx-linux/mlx.h"
 #include "../LIBFT/libft.h"
 
-void	*load_image(void *mlx_ptr, char *path)
+void	*load_image(t_vars *game, char *path)
 {
 	int		w;
 	int		h;
 	void	*img;
 
-	img = mlx_xpm_file_to_image(mlx_ptr, path, &w, &h);
+	img = mlx_xpm_file_to_image(game->mlx, path, &w, &h);
 	if (!img)
+	{
 		ft_printf("fail loading image: %s\n", path);
+		exit_game(game);
+		exit (1);
+	}
 	return (img);
 }
 
@@ -34,12 +38,12 @@ void	destroy_image(void *mlx_ptr, void *img)
 
 int	load_all_images(t_vars *game)
 {
-	game->img_wall = load_image(game->mlx, "textures/wall.xpm");
-	game->img_floor = load_image(game->mlx, "textures/floor.xpm");
-	game->img_player = load_image(game->mlx, "textures/character.xpm");
-	game->img_exit_open = load_image(game->mlx, "textures/open_door.xpm");
-	game->img_exit_closed = load_image(game->mlx, "textures/closed_door.xpm");
-	game->img_collectible = load_image(game->mlx, "textures/key.xpm");
+	game->img_wall = load_image(game, "textures/wall.xpm");
+	game->img_floor = load_image(game, "textures/floor.xpm");
+	game->img_player = load_image(game, "textures/character.xpm");
+	game->img_exit_open = load_image(game, "textures/open_door.xpm");
+	game->img_exit_closed = load_image(game, "textures/closed_door.xpm");
+	game->img_collectible = load_image(game, "textures/key.xpm");
 	if (!game->img_wall || !game->img_floor || !game->img_player)
 		return (0);
 	if (!game->img_exit_open || !game->img_exit_closed ||!game->img_collectible)

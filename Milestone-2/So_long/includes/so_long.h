@@ -1,16 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmanzani <lmanzani@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/07 19:04:23 by lmanzani          #+#    #+#             */
+/*   Updated: 2025/11/07 19:18:33 by lmanzani         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 
-#define SO_LONG_H
-#define KEY_UP 65362
-#define KEY_DOWN 65364
-#define KEY_LEFT 65361
-#define KEY_RIGHT 65363
+# define SO_LONG_H
+# define KEY_UP 65362
+# define KEY_DOWN 65364
+# define KEY_LEFT 65361
+# define KEY_RIGHT 65363
 
-#define KEY_ESC 65307
+# define KEY_ESC 65307
 
-#include <stdlib.h>
-#include "../LIBFT/libft.h"
-#include "../minilibx-linux/mlx.h"
+# include <stdlib.h>
+# include "../LIBFT/libft.h"
+# include "../minilibx-linux/mlx.h"
 
 typedef struct s_point
 {
@@ -55,7 +67,7 @@ int		keypress(int keycode, t_vars *vars);
 void	general_drawer(t_vars *vars);
 int		count_collec(char **map);
 //images.c
-void	*load_image(void *mlx_ptr, char *path);
+void	*load_image(t_vars *game, char *path);
 void	destroy_image(void *mlx_ptr, void *img);
 int		load_all_images(t_vars *game);
 void	destroy_all_images(t_vars *game);

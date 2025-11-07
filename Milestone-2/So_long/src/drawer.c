@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   drawer.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmanzani <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lmanzani <lmanzani@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 19:53:27 by lmanzani          #+#    #+#             */
-/*   Updated: 2025/11/05 18:49:32 by lmanzani         ###   ########.fr       */
+/*   Updated: 2025/11/07 19:55:45 by lmanzani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	draw_map(t_vars *game)
 				if (game->exit_open == 1)
 					draw_tile(game, game->img_exit_open, x, y);
 				else
-					draw_tile(game, game->img_exit_closed, x, y);
+				draw_tile(game, game->img_exit_closed, x, y);
 			}
 			x++;
 		}

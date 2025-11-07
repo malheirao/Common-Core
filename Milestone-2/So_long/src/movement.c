@@ -6,7 +6,7 @@
 /*   By: lmanzani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 17:51:55 by lmanzani          #+#    #+#             */
-/*   Updated: 2025/11/05 19:06:56 by lmanzani         ###   ########.fr       */
+/*   Updated: 2025/11/05 19:41:50 by lmanzani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	move_right_or_left(t_vars *game, int direction)
 		collect(game);
 		finish_game(game);
 		update_window(game);
-		ft_printf("move count: %d\n", ++game->move_count);
+		ft_printf("Movements: %d\n", ++game->move_count);
 	}
 }
 
@@ -59,7 +59,7 @@ void	move_up_or_down(t_vars *game, int direction)
 		collect(game);
 		finish_game(game);
 		update_window(game);
-		ft_printf("move count: %d\n", ++game->move_count);
+		ft_printf("Movements: %d\n", ++game->move_count);
 	}
 }
 
