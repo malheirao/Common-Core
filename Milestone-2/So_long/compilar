@@ -1,1 +1,0 @@
-gcc 1.c libmlx.a -Lmlx_linux -L/usr/lib -lXext -lX11 -lm -lz 
